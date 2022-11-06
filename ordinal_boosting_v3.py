@@ -129,14 +129,7 @@ class Ordinal_boosting:
                 for i,j in enumerate(self.enco_y.keys()):
                     score[:,i] = torch.matmul(y_predict, torch.tensor(self.enco_y[j], dtype=torch.float32))
                 pre_y = np.argmax(score,axis=1) + self.y_min
-            '''
-            pre_y = np.zeros(len(y_predict))
-            for i in range(len(y_predict)):
-                score = {}
-                for j in self.enco_y.keys():
-                    score[j] = np.sum(y_predict.detach().numpy()[i]*self.enco_y[j])
-                pre_y[i] = max(score, key=score.get)
-            '''
+
             g_vector = list(map(lambda x: self.enco_y[x], pre_y))
             g_vector = np.array(g_vector)
             f_vector_test += g_vector*self.alpha_list[m]
