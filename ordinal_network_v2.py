@@ -28,15 +28,6 @@ class ordinal_Network:
             #cost = ((-y*hypothesis).sum(dim=1) * sample_weight).sum()
             cost = ((y-hypothesis)*(y-hypothesis)*sample_weight).sum()
             
-            '''
-            optimizer.zero_grad()
-            cost.backward()
-            '''
-            '''
-            loss = torch.tensor(0.)
-            for k in range(self.n_output-1):
-                loss += torch.max(torch.tensor(0.),hypothesis[:,k]-hypothesis[:,k+1]).sum()
-            '''
             #loss = torch.max(torch.tensor(0.),hypothesis[:,0:(self.n_output-1)] - hypothesis[:,1:self.n_output]).sum()
             #loss = loss/(len(X)*(self.n_output-1))
             
